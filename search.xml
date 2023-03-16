@@ -276,265 +276,6 @@
       </tags>
   </entry>
   <entry>
-    <title>MySql约束</title>
-    <url>/2022/06/01/MySql%E7%BA%A6%E6%9D%9F/</url>
-    <content><![CDATA[<blockquote>
-<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>此贴记录mysql约束用法</p>
-</blockquote>
-<span id="more"></span>
-<h1 id="今日内容"><a href="#今日内容" class="headerlink" title="今日内容"></a>今日内容</h1><pre><code>1. DQL:查询语句
-    1. 排序查询
-    2. 聚合函数
-    3. 分组查询
-    4. 分页查询
-
-2. 约束
-3. 多表之间的关系
-4. 范式
-5. 数据库的备份和还原
-</code></pre><h1 id="DQL-查询语句"><a href="#DQL-查询语句" class="headerlink" title="DQL:查询语句"></a>DQL:查询语句</h1><pre><code>1. 排序查询
-    * 语法：order by 子句
-        * order by 排序字段1 排序方式1 ，  排序字段2 排序方式2...
-
-    * 排序方式：
-        * ASC：升序，默认的。
-        * DESC：降序。
-
-    * 注意：
-        * 如果有多个排序条件，则当前边的条件值一样时，才会判断第二条件。
-
-
-2. 聚合函数：将一列数据作为一个整体，进行纵向的计算。
-    1. count：计算个数
-        1. 一般选择非空的列：主键
-        2. count(*)
-    2. max：计算最大值
-    3. min：计算最小值
-    4. sum：计算和
-    5. avg：计算平均值
-
-
-    * 注意：聚合函数的计算，排除null值。
-        解决方案：
-            1. 选择不包含非空的列进行计算
-            2. IFNULL函数
-
-3. 分组查询:
-    1. 语法：group by 分组字段；
-    2. 注意：
-        1. 分组之后查询的字段：分组字段、聚合函数
-        2. where 和 having 的区别？
-            1. where 在分组之前进行限定，如果不满足条件，则不参与分组。having在分组之后进行限定，如果不满足结果，则不会被查询出来
-            2. where 后不可以跟聚合函数，having可以进行聚合函数的判断。
-
-        -- 按照性别分组。分别查询男、女同学的平均分
-
-        SELECT sex , AVG(math) FROM student GROUP BY sex;
-
-        -- 按照性别分组。分别查询男、女同学的平均分,人数
-
-        SELECT sex , AVG(math),COUNT(id) FROM student GROUP BY sex;
-
-        --  按照性别分组。分别查询男、女同学的平均分,人数 要求：分数低于70分的人，不参与分组
-        SELECT sex , AVG(math),COUNT(id) FROM student WHERE math &gt; 70 GROUP BY sex;
-
-        --  按照性别分组。分别查询男、女同学的平均分,人数 要求：分数低于70分的人，不参与分组,分组之后。人数要大于2个人
-        SELECT sex , AVG(math),COUNT(id) FROM student WHERE math &gt; 70 GROUP BY sex HAVING COUNT(id) &gt; 2;
-
-        SELECT sex , AVG(math),COUNT(id) 人数 FROM student WHERE math &gt; 70 GROUP BY sex HAVING 人数 &gt; 2;
-</code></pre><p>​<br>​    4. 分页查询<br>​        1. 语法：limit 开始的索引,每页查询的条数;<br>​        2. 公式：开始的索引 = （当前的页码 - 1） <em> 每页显示的条数<br>​            — 每页显示3条记录<br>​<br>​            SELECT </em> FROM student LIMIT 0,3; — 第1页<br>​<br>            SELECT * FROM student LIMIT 3,3; — 第2页</p>
-<pre><code>        SELECT * FROM student LIMIT 6,3; -- 第3页
-
-    3. limit 是一个MySQL&quot;方言&quot;
-</code></pre><h2 id="约束"><a href="#约束" class="headerlink" title="约束"></a>约束</h2><pre><code>* 概念： 对表中的数据进行限定，保证数据的正确性、有效性和完整性。    
-* 分类：
-    1. 主键约束：primary key
-    2. 非空约束：not null
-    3. 唯一约束：unique
-    4. 外键约束：foreign key
-
-* 非空约束：not null，值不能为null
-    1. 创建表时添加约束
-        CREATE TABLE stu(
-            id INT,
-            NAME VARCHAR(20) NOT NULL -- name为非空
-        );
-    2. 创建表完后，添加非空约束
-        ALTER TABLE stu MODIFY NAME VARCHAR(20) NOT NULL;
-
-    3. 删除name的非空约束
-        ALTER TABLE stu MODIFY NAME VARCHAR(20);
-</code></pre><p>​<br>​    <em> 唯一约束：unique，值不能重复<br>​        1. 创建表时，添加唯一约束<br>​            CREATE TABLE stu(<br>​                id INT,<br>​                phone_number VARCHAR(20) UNIQUE — 添加了唯一约束<br>​<br>​            );<br>​            </em> 注意mysql中，唯一约束限定的列的值可以有多个null</p>
-<p>​<br>​        2. 删除唯一约束<br>​<br>​            ALTER TABLE stu DROP INDEX phone_number;<br>​        </p>
-<pre><code>    3. 在创建表后，添加唯一约束
-        ALTER TABLE stu MODIFY phone_number VARCHAR(20) UNIQUE;
-
-* 主键约束：primary key。
-    1. 注意：
-        1. 含义：非空且唯一
-        2. 一张表只能有一个字段为主键
-        3. 主键就是表中记录的唯一标识
-
-    2. 在创建表时，添加主键约束
-        create table stu(
-            id int primary key,-- 给id添加主键约束
-            name varchar(20)
-        );
-
-    3. 删除主键
-        -- 错误 alter table stu modify id int ;
-        ALTER TABLE stu DROP PRIMARY KEY;
-
-    4. 创建完表后，添加主键
-        ALTER TABLE stu MODIFY id INT PRIMARY KEY;
-
-    5. 自动增长：
-        1.  概念：如果某一列是数值类型的，使用 auto_increment 可以来完成值得自动增长
-
-        2. 在创建表时，添加主键约束，并且完成主键自增长
-        create table stu(
-            id int primary key auto_increment,-- 给id添加主键约束
-            name varchar(20)
-        );
-</code></pre><p>​<br>​            3. 删除自动增长<br>​            ALTER TABLE stu MODIFY id INT;<br>​            4. 添加自动增长<br>​            ALTER TABLE stu MODIFY id INT AUTO_INCREMENT;</p>
-<pre><code>* 外键约束：foreign key,让表于表产生关系，从而保证数据的正确性。
-    1. 在创建表时，可以添加外键
-        * 语法：
-            create table 表名(
-                ....
-                外键列
-                constraint 外键名称 foreign key (外键列名称) references 主表名称(主表列名称)
-            );
-
-    2. 删除外键
-        ALTER TABLE 表名 DROP FOREIGN KEY 外键名称;
-
-    3. 创建表之后，添加外键
-        ALTER TABLE 表名 ADD CONSTRAINT 外键名称 FOREIGN KEY (外键字段名称) REFERENCES 主表名称(主表列名称);
-</code></pre><p>​<br>​        4. 级联操作<br>​            1. 添加级联操作<br>​                语法：ALTER TABLE 表名 ADD CONSTRAINT 外键名称<br>​                        FOREIGN KEY (外键字段名称) REFERENCES 主表名称(主表列名称) ON UPDATE CASCADE ON DELETE CASCADE  ;<br>​            2. 分类：<br>​                1. 级联更新：ON UPDATE CASCADE<br>​                2. 级联删除：ON DELETE CASCADE </p>
-<h2 id="数据库的设计"><a href="#数据库的设计" class="headerlink" title="数据库的设计"></a>数据库的设计</h2><pre><code>1. 多表之间的关系
-    1. 分类：
-        1. 一对一(了解)：
-            * 如：人和身份证
-            * 分析：一个人只有一个身份证，一个身份证只能对应一个人
-        2. 一对多(多对一)：
-            * 如：部门和员工
-            * 分析：一个部门有多个员工，一个员工只能对应一个部门
-        3. 多对多：
-            * 如：学生和课程
-            * 分析：一个学生可以选择很多门课程，一个课程也可以被很多学生选择
-    2. 实现关系：
-        1. 一对多(多对一)：
-            * 如：部门和员工
-            * 实现方式：在多的一方建立外键，指向一的一方的主键。
-        2. 多对多：
-            * 如：学生和课程
-            * 实现方式：多对多关系实现需要借助第三张中间表。中间表至少包含两个字段，这两个字段作为第三张表的外键，分别指向两张表的主键
-        3. 一对一(了解)：
-            * 如：人和身份证
-            * 实现方式：一对一关系实现，可以在任意一方添加唯一外键指向另一方的主键。
-
-    3. 案例
-        -- 创建旅游线路分类表 tab_category
-        -- cid 旅游线路分类主键，自动增长
-        -- cname 旅游线路分类名称非空，唯一，字符串 100
-        CREATE TABLE tab_category (
-            cid INT PRIMARY KEY AUTO_INCREMENT,
-            cname VARCHAR(100) NOT NULL UNIQUE
-        );
-
-        -- 创建旅游线路表 tab_route
-        /*
-        rid 旅游线路主键，自动增长
-        rname 旅游线路名称非空，唯一，字符串 100
-        price 价格
-        rdate 上架时间，日期类型
-        cid 外键，所属分类
-        */
-        CREATE TABLE tab_route(
-            rid INT PRIMARY KEY AUTO_INCREMENT,
-            rname VARCHAR(100) NOT NULL UNIQUE,
-            price DOUBLE,
-            rdate DATE,
-            cid INT,
-            FOREIGN KEY (cid) REFERENCES tab_category(cid)
-        );
-
-        /*创建用户表 tab_user
-        uid 用户主键，自增长
-        username 用户名长度 100，唯一，非空
-        password 密码长度 30，非空
-        name 真实姓名长度 100
-        birthday 生日
-        sex 性别，定长字符串 1
-        telephone 手机号，字符串 11
-        email 邮箱，字符串长度 100
-        */
-        CREATE TABLE tab_user (
-            uid INT PRIMARY KEY AUTO_INCREMENT,
-            username VARCHAR(100) UNIQUE NOT NULL,
-            PASSWORD VARCHAR(30) NOT NULL,
-            NAME VARCHAR(100),
-            birthday DATE,
-            sex CHAR(1) DEFAULT &#39;男&#39;,
-            telephone VARCHAR(11),
-            email VARCHAR(100)
-        );
-
-        /*
-        创建收藏表 tab_favorite
-        rid 旅游线路 id，外键
-        date 收藏时间
-        uid 用户 id，外键
-        rid 和 uid 不能重复，设置复合主键，同一个用户不能收藏同一个线路两次
-        */
-        CREATE TABLE tab_favorite (
-            rid INT, -- 线路id
-            DATE DATETIME,
-            uid INT, -- 用户id
-            -- 创建复合主键
-            PRIMARY KEY(rid,uid), -- 联合主键
-            FOREIGN KEY (rid) REFERENCES tab_route(rid),
-            FOREIGN KEY(uid) REFERENCES tab_user(uid)
-        );
-</code></pre><p>​<br>​    2. 数据库设计的范式<br>​        * 概念：设计数据库时，需要遵循的一些规范。要遵循后边的范式要求，必须先遵循前边的所有范式要求<br>​<br>​            设计关系数据库时，遵从不同的规范要求，设计出合理的关系型数据库，这些不同的规范要求被称为不同的范式，各种范式呈递次规范，越高的范式数据库冗余越小。<br>​            目前关系数据库有六种范式：第一范式（1NF）、第二范式（2NF）、第三范式（3NF）、巴斯-科德范式（BCNF）、第四范式(4NF）和第五范式（5NF，又称完美范式）。<br>​    </p>
-<pre><code>    * 分类：
-        1. 第一范式（1NF）：每一列都是不可分割的原子数据项
-        2. 第二范式（2NF）：在1NF的基础上，非码属性必须完全依赖于码（在1NF基础上消除非主属性对主码的部分函数依赖）
-            * 几个概念：
-                1. 函数依赖：A--&gt;B,如果通过A属性(属性组)的值，可以确定唯一B属性的值。则称B依赖于A
-                    例如：学号--&gt;姓名。  （学号，课程名称） --&gt; 分数
-                2. 完全函数依赖：A--&gt;B， 如果A是一个属性组，则B属性值得确定需要依赖于A属性组中所有的属性值。
-                    例如：（学号，课程名称） --&gt; 分数
-                3. 部分函数依赖：A--&gt;B， 如果A是一个属性组，则B属性值得确定只需要依赖于A属性组中某一些值即可。
-                    例如：（学号，课程名称） -- &gt; 姓名
-                4. 传递函数依赖：A--&gt;B, B -- &gt;C . 如果通过A属性(属性组)的值，可以确定唯一B属性的值，在通过B属性（属性组）的值可以确定唯一C属性的值，则称 C 传递函数依赖于A
-                    例如：学号--&gt;系名，系名--&gt;系主任
-                5. 码：如果在一张表中，一个属性或属性组，被其他所有属性所完全依赖，则称这个属性(属性组)为该表的码
-                    例如：该表中码为：（学号，课程名称）
-                    * 主属性：码属性组中的所有属性
-                    * 非主属性：除过码属性组的属性
-
-        3. 第三范式（3NF）：在2NF基础上，任何非主属性不依赖于其它非主属性（在2NF基础上消除传递依赖）
-</code></pre><h2 id="数据库的备份和还原"><a href="#数据库的备份和还原" class="headerlink" title="数据库的备份和还原"></a>数据库的备份和还原</h2><pre><code>1. 命令行：
-    * 语法：
-        * 备份： mysqldump -u用户名 -p密码 数据库名称 &gt; 保存的路径
-        * 还原：
-            1. 登录数据库
-            2. 创建数据库
-            3. 使用数据库
-            4. 执行文件。source 文件路径
-2. 图形化工具：
-</code></pre>]]></content>
-      <categories>
-        <category>数据库</category>
-      </categories>
-      <tags>
-        <tag>mysql</tag>
-        <tag>note</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>MySql多表&amp;事务</title>
     <url>/2022/06/01/MySql%E5%A4%9A%E8%A1%A8-%E4%BA%8B%E5%8A%A1/</url>
     <content><![CDATA[<blockquote>
@@ -883,6 +624,265 @@
       </tags>
   </entry>
   <entry>
+    <title>MySql约束</title>
+    <url>/2022/06/01/MySql%E7%BA%A6%E6%9D%9F/</url>
+    <content><![CDATA[<blockquote>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>此贴记录mysql约束用法</p>
+</blockquote>
+<span id="more"></span>
+<h1 id="今日内容"><a href="#今日内容" class="headerlink" title="今日内容"></a>今日内容</h1><pre><code>1. DQL:查询语句
+    1. 排序查询
+    2. 聚合函数
+    3. 分组查询
+    4. 分页查询
+
+2. 约束
+3. 多表之间的关系
+4. 范式
+5. 数据库的备份和还原
+</code></pre><h1 id="DQL-查询语句"><a href="#DQL-查询语句" class="headerlink" title="DQL:查询语句"></a>DQL:查询语句</h1><pre><code>1. 排序查询
+    * 语法：order by 子句
+        * order by 排序字段1 排序方式1 ，  排序字段2 排序方式2...
+
+    * 排序方式：
+        * ASC：升序，默认的。
+        * DESC：降序。
+
+    * 注意：
+        * 如果有多个排序条件，则当前边的条件值一样时，才会判断第二条件。
+
+
+2. 聚合函数：将一列数据作为一个整体，进行纵向的计算。
+    1. count：计算个数
+        1. 一般选择非空的列：主键
+        2. count(*)
+    2. max：计算最大值
+    3. min：计算最小值
+    4. sum：计算和
+    5. avg：计算平均值
+
+
+    * 注意：聚合函数的计算，排除null值。
+        解决方案：
+            1. 选择不包含非空的列进行计算
+            2. IFNULL函数
+
+3. 分组查询:
+    1. 语法：group by 分组字段；
+    2. 注意：
+        1. 分组之后查询的字段：分组字段、聚合函数
+        2. where 和 having 的区别？
+            1. where 在分组之前进行限定，如果不满足条件，则不参与分组。having在分组之后进行限定，如果不满足结果，则不会被查询出来
+            2. where 后不可以跟聚合函数，having可以进行聚合函数的判断。
+
+        -- 按照性别分组。分别查询男、女同学的平均分
+
+        SELECT sex , AVG(math) FROM student GROUP BY sex;
+
+        -- 按照性别分组。分别查询男、女同学的平均分,人数
+
+        SELECT sex , AVG(math),COUNT(id) FROM student GROUP BY sex;
+
+        --  按照性别分组。分别查询男、女同学的平均分,人数 要求：分数低于70分的人，不参与分组
+        SELECT sex , AVG(math),COUNT(id) FROM student WHERE math &gt; 70 GROUP BY sex;
+
+        --  按照性别分组。分别查询男、女同学的平均分,人数 要求：分数低于70分的人，不参与分组,分组之后。人数要大于2个人
+        SELECT sex , AVG(math),COUNT(id) FROM student WHERE math &gt; 70 GROUP BY sex HAVING COUNT(id) &gt; 2;
+
+        SELECT sex , AVG(math),COUNT(id) 人数 FROM student WHERE math &gt; 70 GROUP BY sex HAVING 人数 &gt; 2;
+</code></pre><p>​<br>​    4. 分页查询<br>​        1. 语法：limit 开始的索引,每页查询的条数;<br>​        2. 公式：开始的索引 = （当前的页码 - 1） <em> 每页显示的条数<br>​            — 每页显示3条记录<br>​<br>​            SELECT </em> FROM student LIMIT 0,3; — 第1页<br>​<br>            SELECT * FROM student LIMIT 3,3; — 第2页</p>
+<pre><code>        SELECT * FROM student LIMIT 6,3; -- 第3页
+
+    3. limit 是一个MySQL&quot;方言&quot;
+</code></pre><h2 id="约束"><a href="#约束" class="headerlink" title="约束"></a>约束</h2><pre><code>* 概念： 对表中的数据进行限定，保证数据的正确性、有效性和完整性。    
+* 分类：
+    1. 主键约束：primary key
+    2. 非空约束：not null
+    3. 唯一约束：unique
+    4. 外键约束：foreign key
+
+* 非空约束：not null，值不能为null
+    1. 创建表时添加约束
+        CREATE TABLE stu(
+            id INT,
+            NAME VARCHAR(20) NOT NULL -- name为非空
+        );
+    2. 创建表完后，添加非空约束
+        ALTER TABLE stu MODIFY NAME VARCHAR(20) NOT NULL;
+
+    3. 删除name的非空约束
+        ALTER TABLE stu MODIFY NAME VARCHAR(20);
+</code></pre><p>​<br>​    <em> 唯一约束：unique，值不能重复<br>​        1. 创建表时，添加唯一约束<br>​            CREATE TABLE stu(<br>​                id INT,<br>​                phone_number VARCHAR(20) UNIQUE — 添加了唯一约束<br>​<br>​            );<br>​            </em> 注意mysql中，唯一约束限定的列的值可以有多个null</p>
+<p>​<br>​        2. 删除唯一约束<br>​<br>​            ALTER TABLE stu DROP INDEX phone_number;<br>​        </p>
+<pre><code>    3. 在创建表后，添加唯一约束
+        ALTER TABLE stu MODIFY phone_number VARCHAR(20) UNIQUE;
+
+* 主键约束：primary key。
+    1. 注意：
+        1. 含义：非空且唯一
+        2. 一张表只能有一个字段为主键
+        3. 主键就是表中记录的唯一标识
+
+    2. 在创建表时，添加主键约束
+        create table stu(
+            id int primary key,-- 给id添加主键约束
+            name varchar(20)
+        );
+
+    3. 删除主键
+        -- 错误 alter table stu modify id int ;
+        ALTER TABLE stu DROP PRIMARY KEY;
+
+    4. 创建完表后，添加主键
+        ALTER TABLE stu MODIFY id INT PRIMARY KEY;
+
+    5. 自动增长：
+        1.  概念：如果某一列是数值类型的，使用 auto_increment 可以来完成值得自动增长
+
+        2. 在创建表时，添加主键约束，并且完成主键自增长
+        create table stu(
+            id int primary key auto_increment,-- 给id添加主键约束
+            name varchar(20)
+        );
+</code></pre><p>​<br>​            3. 删除自动增长<br>​            ALTER TABLE stu MODIFY id INT;<br>​            4. 添加自动增长<br>​            ALTER TABLE stu MODIFY id INT AUTO_INCREMENT;</p>
+<pre><code>* 外键约束：foreign key,让表于表产生关系，从而保证数据的正确性。
+    1. 在创建表时，可以添加外键
+        * 语法：
+            create table 表名(
+                ....
+                外键列
+                constraint 外键名称 foreign key (外键列名称) references 主表名称(主表列名称)
+            );
+
+    2. 删除外键
+        ALTER TABLE 表名 DROP FOREIGN KEY 外键名称;
+
+    3. 创建表之后，添加外键
+        ALTER TABLE 表名 ADD CONSTRAINT 外键名称 FOREIGN KEY (外键字段名称) REFERENCES 主表名称(主表列名称);
+</code></pre><p>​<br>​        4. 级联操作<br>​            1. 添加级联操作<br>​                语法：ALTER TABLE 表名 ADD CONSTRAINT 外键名称<br>​                        FOREIGN KEY (外键字段名称) REFERENCES 主表名称(主表列名称) ON UPDATE CASCADE ON DELETE CASCADE  ;<br>​            2. 分类：<br>​                1. 级联更新：ON UPDATE CASCADE<br>​                2. 级联删除：ON DELETE CASCADE </p>
+<h2 id="数据库的设计"><a href="#数据库的设计" class="headerlink" title="数据库的设计"></a>数据库的设计</h2><pre><code>1. 多表之间的关系
+    1. 分类：
+        1. 一对一(了解)：
+            * 如：人和身份证
+            * 分析：一个人只有一个身份证，一个身份证只能对应一个人
+        2. 一对多(多对一)：
+            * 如：部门和员工
+            * 分析：一个部门有多个员工，一个员工只能对应一个部门
+        3. 多对多：
+            * 如：学生和课程
+            * 分析：一个学生可以选择很多门课程，一个课程也可以被很多学生选择
+    2. 实现关系：
+        1. 一对多(多对一)：
+            * 如：部门和员工
+            * 实现方式：在多的一方建立外键，指向一的一方的主键。
+        2. 多对多：
+            * 如：学生和课程
+            * 实现方式：多对多关系实现需要借助第三张中间表。中间表至少包含两个字段，这两个字段作为第三张表的外键，分别指向两张表的主键
+        3. 一对一(了解)：
+            * 如：人和身份证
+            * 实现方式：一对一关系实现，可以在任意一方添加唯一外键指向另一方的主键。
+
+    3. 案例
+        -- 创建旅游线路分类表 tab_category
+        -- cid 旅游线路分类主键，自动增长
+        -- cname 旅游线路分类名称非空，唯一，字符串 100
+        CREATE TABLE tab_category (
+            cid INT PRIMARY KEY AUTO_INCREMENT,
+            cname VARCHAR(100) NOT NULL UNIQUE
+        );
+
+        -- 创建旅游线路表 tab_route
+        /*
+        rid 旅游线路主键，自动增长
+        rname 旅游线路名称非空，唯一，字符串 100
+        price 价格
+        rdate 上架时间，日期类型
+        cid 外键，所属分类
+        */
+        CREATE TABLE tab_route(
+            rid INT PRIMARY KEY AUTO_INCREMENT,
+            rname VARCHAR(100) NOT NULL UNIQUE,
+            price DOUBLE,
+            rdate DATE,
+            cid INT,
+            FOREIGN KEY (cid) REFERENCES tab_category(cid)
+        );
+
+        /*创建用户表 tab_user
+        uid 用户主键，自增长
+        username 用户名长度 100，唯一，非空
+        password 密码长度 30，非空
+        name 真实姓名长度 100
+        birthday 生日
+        sex 性别，定长字符串 1
+        telephone 手机号，字符串 11
+        email 邮箱，字符串长度 100
+        */
+        CREATE TABLE tab_user (
+            uid INT PRIMARY KEY AUTO_INCREMENT,
+            username VARCHAR(100) UNIQUE NOT NULL,
+            PASSWORD VARCHAR(30) NOT NULL,
+            NAME VARCHAR(100),
+            birthday DATE,
+            sex CHAR(1) DEFAULT &#39;男&#39;,
+            telephone VARCHAR(11),
+            email VARCHAR(100)
+        );
+
+        /*
+        创建收藏表 tab_favorite
+        rid 旅游线路 id，外键
+        date 收藏时间
+        uid 用户 id，外键
+        rid 和 uid 不能重复，设置复合主键，同一个用户不能收藏同一个线路两次
+        */
+        CREATE TABLE tab_favorite (
+            rid INT, -- 线路id
+            DATE DATETIME,
+            uid INT, -- 用户id
+            -- 创建复合主键
+            PRIMARY KEY(rid,uid), -- 联合主键
+            FOREIGN KEY (rid) REFERENCES tab_route(rid),
+            FOREIGN KEY(uid) REFERENCES tab_user(uid)
+        );
+</code></pre><p>​<br>​    2. 数据库设计的范式<br>​        * 概念：设计数据库时，需要遵循的一些规范。要遵循后边的范式要求，必须先遵循前边的所有范式要求<br>​<br>​            设计关系数据库时，遵从不同的规范要求，设计出合理的关系型数据库，这些不同的规范要求被称为不同的范式，各种范式呈递次规范，越高的范式数据库冗余越小。<br>​            目前关系数据库有六种范式：第一范式（1NF）、第二范式（2NF）、第三范式（3NF）、巴斯-科德范式（BCNF）、第四范式(4NF）和第五范式（5NF，又称完美范式）。<br>​    </p>
+<pre><code>    * 分类：
+        1. 第一范式（1NF）：每一列都是不可分割的原子数据项
+        2. 第二范式（2NF）：在1NF的基础上，非码属性必须完全依赖于码（在1NF基础上消除非主属性对主码的部分函数依赖）
+            * 几个概念：
+                1. 函数依赖：A--&gt;B,如果通过A属性(属性组)的值，可以确定唯一B属性的值。则称B依赖于A
+                    例如：学号--&gt;姓名。  （学号，课程名称） --&gt; 分数
+                2. 完全函数依赖：A--&gt;B， 如果A是一个属性组，则B属性值得确定需要依赖于A属性组中所有的属性值。
+                    例如：（学号，课程名称） --&gt; 分数
+                3. 部分函数依赖：A--&gt;B， 如果A是一个属性组，则B属性值得确定只需要依赖于A属性组中某一些值即可。
+                    例如：（学号，课程名称） -- &gt; 姓名
+                4. 传递函数依赖：A--&gt;B, B -- &gt;C . 如果通过A属性(属性组)的值，可以确定唯一B属性的值，在通过B属性（属性组）的值可以确定唯一C属性的值，则称 C 传递函数依赖于A
+                    例如：学号--&gt;系名，系名--&gt;系主任
+                5. 码：如果在一张表中，一个属性或属性组，被其他所有属性所完全依赖，则称这个属性(属性组)为该表的码
+                    例如：该表中码为：（学号，课程名称）
+                    * 主属性：码属性组中的所有属性
+                    * 非主属性：除过码属性组的属性
+
+        3. 第三范式（3NF）：在2NF基础上，任何非主属性不依赖于其它非主属性（在2NF基础上消除传递依赖）
+</code></pre><h2 id="数据库的备份和还原"><a href="#数据库的备份和还原" class="headerlink" title="数据库的备份和还原"></a>数据库的备份和还原</h2><pre><code>1. 命令行：
+    * 语法：
+        * 备份： mysqldump -u用户名 -p密码 数据库名称 &gt; 保存的路径
+        * 还原：
+            1. 登录数据库
+            2. 创建数据库
+            3. 使用数据库
+            4. 执行文件。source 文件路径
+2. 图形化工具：
+</code></pre>]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>mysql</tag>
+        <tag>note</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>aelf视频笔记</title>
     <url>/2022/06/17/aelf%E8%A7%86%E9%A2%91%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<blockquote>
@@ -896,16 +896,16 @@
 <h3 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h3><ol>
 <li>在State文件里，如果变量后加上state后则表示要进数据库，每次修改完后会进数据库</li>
 </ol>
-<p><img src="aelf视频笔记/image-20220617142357760.png" alt="image-20220617142357760"></p>
+<p><img src="image-20220617142357760.png" alt="image-20220617142357760"></p>
 <ol>
 <li>当成员变量只能有一个时，在state文件中使用singleton定义</li>
 </ol>
-<p><img src="aelf视频笔记/image-20220617145512806.png" alt="image-20220617145512806"></p>
+<p><img src="image-20220617145512806.png" alt="image-20220617145512806"></p>
 <ol>
 <li>Context中天然提供一些调用者的信息，诸如sender，为调用者的地址</li>
 </ol>
-<p><img src="aelf视频笔记/image-20220617150330352.png" alt="image-20220617150330352"></p>
-<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><h4 id="写完proto文件后生成遇到问题"><a href="#写完proto文件后生成遇到问题" class="headerlink" title="写完proto文件后生成遇到问题"></a>写完proto文件后生成遇到问题</h4><p><img src="aelf视频笔记/image-20220617140546624.png" alt="image-20220617140546624"></p>
+<p><img src="image-20220617150330352.png" alt="image-20220617150330352"></p>
+<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><h4 id="写完proto文件后生成遇到问题"><a href="#写完proto文件后生成遇到问题" class="headerlink" title="写完proto文件后生成遇到问题"></a>写完proto文件后生成遇到问题</h4><p><img src="image-20220617140546624.png" alt="image-20220617140546624"></p>
 ]]></content>
       <categories>
         <category>note</category>
@@ -923,7 +923,7 @@
 <span id="more"></span>
 <h3 id="1-控制台信息输出过多"><a href="#1-控制台信息输出过多" class="headerlink" title="1. 控制台信息输出过多"></a>1. 控制台信息输出过多</h3><p>解决方法:修改以下选项</p>
 <p>给出<a href="https://docs.microsoft.com/en-us/dotnet/core/extensions/logging?tabs=command-line">Logging in .NET | Microsoft Docs</a></p>
-<p><img src="aelf设置/image-20220623201550242.png" alt="image-20220623201550242"></p>
+<p><img src="image-20220623201550242.png" alt="image-20220623201550242"></p>
 <p>给出选项名和意</p>
 <div class="table-container">
 <table>
@@ -986,18 +986,18 @@
 <ol>
 <li>类型‘ ’中不存在类型名‘’</li>
 </ol>
-<p><img src="aelf错误归纳/image-20220620094656590.png" alt="image-20220620094656590"></p>
+<p><img src="image-20220620094656590.png" alt="image-20220620094656590"></p>
 <p>解决方法：在类声明处添加partial，如下</p>
-<p><img src="aelf错误归纳/image-20220620100811478.png" alt="image-20220620100811478"></p>
+<p><img src="image-20220620100811478.png" alt="image-20220620100811478"></p>
 <p>在代码生成器中上图中红色方框加上不能省</p>
 <ol>
 <li>proto问题，添加新的proto文件后build无效没有生成对应文件</li>
 </ol>
 <p>build无效即没在generated下生成对应文件</p>
-<p><img src="aelf错误归纳/image-20220620205148011.png" alt="image-20220620205148011"></p>
+<p><img src="image-20220620205148011.png" alt="image-20220620205148011"></p>
 <p>解决方法：导航到如下路径下的csproj文件，然后加上方框内如下所示代码</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;ContractReference Include=&quot;..\..\protobuf\token_contract.proto&quot;&gt;</span><br><span class="line">  &lt;Link&gt;Protobuf/Proto/token_contract.proto&lt;/Link&gt;</span><br><span class="line">&lt;/ContractReference&gt;</span><br></pre></td></tr></table></figure>
-<p><img src="aelf错误归纳/image-20220620204743677.png" alt="image-20220620204743677"></p>
+<p><img src="image-20220620204743677.png" alt="image-20220620204743677"></p>
 <ol>
 <li>关于新建对象明明定义了，却说没有，如下图</li>
 </ol>
@@ -1019,7 +1019,7 @@
 </blockquote>
 <span id="more"></span>
 <h3 id="aelf-type"><a href="#aelf-type" class="headerlink" title="aelf.type"></a>aelf.type</h3><p><a href="https://docs.aelf.io/en/latest/reference/smart-contract-api/referendum.html#aelf.Hash">AElf.Contracts.Referendum — AElf release/1.0.0 documentation</a></p>
-<p><img src="bingogame研究/image-20220616214514521.png" alt="image-20220616214514521"></p>
+<p><img src="image-20220616214514521.png" alt="image-20220616214514521"></p>
 ]]></content>
       <categories>
         <category>note</category>
@@ -1059,14 +1059,6 @@
       </tags>
   </entry>
   <entry>
-    <title>first</title>
-    <url>/2022/05/30/first/</url>
-    <content><![CDATA[]]></content>
-      <tags>
-        <tag>first</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>cmd输入</title>
     <url>/2022/05/31/cmd%E8%BE%93%E5%85%A5/</url>
     <content><![CDATA[<span id="more"></span>
@@ -1078,6 +1070,14 @@
       </categories>
       <tags>
         <tag>cmd</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>first</title>
+    <url>/2022/05/30/first/</url>
+    <content><![CDATA[]]></content>
+      <tags>
+        <tag>first</tag>
       </tags>
   </entry>
   <entry>
@@ -1350,10 +1350,10 @@
     <content><![CDATA[<p>修改播放歌曲</p>
 <span id="more"></span>
 <p>修改:\myweb\myblog\themes\next\layout_macro\sidebar.swig</p>
-<p><img src="./切歌/1.png" alt="1"></p>
+<p><img src="1.png" alt="1"></p>
 <p>将改块换为网易云外链</p>
-
-<p><img src="./切歌/a.png" alt="a"></p>
+<img src="/2022/05/31/%E5%88%87%E6%AD%8C/a.png" class="" title="This is an example image">
+<p><img src="a.png" alt="a"></p>
 ]]></content>
       <categories>
         <category>杂记</category>
@@ -1372,7 +1372,7 @@
 <h3 id="环境配置for-linux"><a href="#环境配置for-linux" class="headerlink" title="环境配置for linux"></a>环境配置for linux</h3><ol>
 <li><p>```<br>sudo apt-get install nodejs</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">2. ```</span><br><span class="line">   sudo apt install redis-server</span><br><span class="line">   验证：redis-server</span><br><span class="line">   结果如下</span><br><span class="line">   关闭使用redis-cli shutdown</span><br><span class="line">   如果杀死不了，则是开了保护进程，杀死一个就会再开一个，这时使用/etc/init.d/redis-server stop</span><br></pre></td></tr></table></figure>
-<p><img src="大创/image-20220610221700059.png" alt="image-20220610221700059"></p>
+<p><img src="image-20220610221700059.png" alt="image-20220610221700059"></p>
 </li>
 <li><p>安装.NET Core,高版本兼容低版本，所以不必一定安装3.1</p>
 <p><a href="https://dotnet.microsoft.com/zh-cn/download/dotnet">.NET 下载(Linux、macOS 和 Windows) (microsoft.com)</a></p>
@@ -1389,7 +1389,7 @@
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd ../../test/AElf.Contracts.HelloWorldContract.Tests/</span><br><span class="line">dotnet test</span><br><span class="line">官网上智障的缺了个s</span><br><span class="line"></span><br><span class="line">输出：</span><br><span class="line">Test Run Successful.</span><br><span class="line">Total tests: 1</span><br><span class="line">     Passed: 1</span><br><span class="line"> Total time: 2.8865 Seconds</span><br><span class="line"> </span><br><span class="line"> 实际tmd是汉语：</span><br><span class="line"> 正在启动测试执行，请稍候...</span><br><span class="line">总共 1 个测试文件与指定模式相匹配。</span><br><span class="line">已通过! - 失败:     0，通过:     1，已跳过:     0，总计:     1，持续时间: &lt; 1 ms</span><br></pre></td></tr></table></figure>
 <p>3.code generator代码生成器</p>
 <figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*Navigate to AElf.Boilerplate.CodeGenerator folder and open appsettings.json, modify Content node, tune New values as you wish*/</span></span><br></pre></td></tr></table></figure>
-<p>eg:<img src="大创/image-20211110214144737.png" alt="image-20211110214144737"></p>
+<p>eg:<img src="image-20211110214144737.png" alt="image-20211110214144737"></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># enter the Launcher folder and build </span><br><span class="line">cd chain/src/AElf.Boilerplate.CodeGenerator/</span><br><span class="line"></span><br><span class="line"># build</span><br><span class="line">dotnet build</span><br><span class="line"></span><br><span class="line"># run the node </span><br><span class="line">dotnet run --no-build bin/Debug/netcoreapp3.1/AElf.Boilerplate.CodeGenerator</span><br></pre></td></tr></table></figure>
 <ol>
 <li><p>合约部署contract deployment</p>
@@ -1460,7 +1460,7 @@
 <li>提交者：提交项目用于评审</li>
 <li>评审者：评审提交的项目</li>
 </ul>
-<p><img src="大创规划/image-20220617143258886.png" alt="image-20220617143258886"></p>
+<p><img src="image-20220617143258886.png" alt="image-20220617143258886"></p>
 <h3 id="合约编写"><a href="#合约编写" class="headerlink" title="合约编写"></a>合约编写</h3><h4 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h4><div class="table-container">
 <table>
 <thead>
