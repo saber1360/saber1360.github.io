@@ -915,6 +915,41 @@
       </tags>
   </entry>
   <entry>
+    <title>aelf错误归纳</title>
+    <url>/2022/06/20/aelf%E9%94%99%E8%AF%AF%E5%BD%92%E7%BA%B3/</url>
+    <content><![CDATA[<blockquote>
+<h3 id="summary"><a href="#summary" class="headerlink" title="summary"></a>summary</h3><p>记录一些遇到的问题及错误</p>
+</blockquote>
+<span id="more"></span>
+<ol>
+<li>类型‘ ’中不存在类型名‘’</li>
+</ol>
+<p><img src="image-20220620094656590.png" alt="image-20220620094656590"></p>
+<p>解决方法：在类声明处添加partial，如下</p>
+<p><img src="image-20220620100811478.png" alt="image-20220620100811478"></p>
+<p>在代码生成器中上图中红色方框加上不能省</p>
+<ol>
+<li>proto问题，添加新的proto文件后build无效没有生成对应文件</li>
+</ol>
+<p>build无效即没在generated下生成对应文件</p>
+<p><img src="image-20220620205148011.png" alt="image-20220620205148011"></p>
+<p>解决方法：导航到如下路径下的csproj文件，然后加上方框内如下所示代码</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;ContractReference Include=&quot;..\..\protobuf\token_contract.proto&quot;&gt;</span><br><span class="line">  &lt;Link&gt;Protobuf/Proto/token_contract.proto&lt;/Link&gt;</span><br><span class="line">&lt;/ContractReference&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="image-20220620204743677.png" alt="image-20220620204743677"></p>
+<ol>
+<li>关于新建对象明明定义了，却说没有，如下图</li>
+</ol>
+<p><img src="aelf错误归纳/image-20220621165902989.png" alt="image-20220621165902989"></p>
+<p>解决方法：将logined，改为Logined即可，即首字母需要大写，无论你在proto里首字母定义的大写或小写</p>
+]]></content>
+      <categories>
+        <category>note</category>
+      </categories>
+      <tags>
+        <tag>大创</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>aelf设置</title>
     <url>/2022/06/23/aelf%E8%AE%BE%E7%BD%AE/</url>
     <content><![CDATA[<blockquote>
@@ -968,41 +1003,6 @@
 </tbody>
 </table>
 </div>
-]]></content>
-      <categories>
-        <category>note</category>
-      </categories>
-      <tags>
-        <tag>大创</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>aelf错误归纳</title>
-    <url>/2022/06/20/aelf%E9%94%99%E8%AF%AF%E5%BD%92%E7%BA%B3/</url>
-    <content><![CDATA[<blockquote>
-<h3 id="summary"><a href="#summary" class="headerlink" title="summary"></a>summary</h3><p>记录一些遇到的问题及错误</p>
-</blockquote>
-<span id="more"></span>
-<ol>
-<li>类型‘ ’中不存在类型名‘’</li>
-</ol>
-<p><img src="image-20220620094656590.png" alt="image-20220620094656590"></p>
-<p>解决方法：在类声明处添加partial，如下</p>
-<p><img src="image-20220620100811478.png" alt="image-20220620100811478"></p>
-<p>在代码生成器中上图中红色方框加上不能省</p>
-<ol>
-<li>proto问题，添加新的proto文件后build无效没有生成对应文件</li>
-</ol>
-<p>build无效即没在generated下生成对应文件</p>
-<p><img src="image-20220620205148011.png" alt="image-20220620205148011"></p>
-<p>解决方法：导航到如下路径下的csproj文件，然后加上方框内如下所示代码</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;ContractReference Include=&quot;..\..\protobuf\token_contract.proto&quot;&gt;</span><br><span class="line">  &lt;Link&gt;Protobuf/Proto/token_contract.proto&lt;/Link&gt;</span><br><span class="line">&lt;/ContractReference&gt;</span><br></pre></td></tr></table></figure>
-<p><img src="image-20220620204743677.png" alt="image-20220620204743677"></p>
-<ol>
-<li>关于新建对象明明定义了，却说没有，如下图</li>
-</ol>
-<p><img src="aelf错误归纳/image-20220621165902989.png" alt="image-20220621165902989"></p>
-<p>解决方法：将logined，改为Logined即可，即首字母需要大写，无论你在proto里首字母定义的大写或小写</p>
 ]]></content>
       <categories>
         <category>note</category>
