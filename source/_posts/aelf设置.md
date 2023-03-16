@@ -17,7 +17,7 @@ categories: note
 
 给出[Logging in .NET | Microsoft Docs](https://docs.microsoft.com/en-us/dotnet/core/extensions/logging?tabs=command-line)
 
-![image-20220623201550242](aelf设置/image-20220623201550242.png)
+![image-20220623201550242](image-20220623201550242.png)
 
 给出选项名和意
 

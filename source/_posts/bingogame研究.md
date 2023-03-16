@@ -15,4 +15,4 @@ categories: note
 
 [AElf.Contracts.Referendum — AElf release/1.0.0 documentation](https://docs.aelf.io/en/latest/reference/smart-contract-api/referendum.html#aelf.Hash)
 
-![image-20220616214514521](bingogame研究/image-20220616214514521.png)
+![image-20220616214514521](image-20220616214514521.png)
