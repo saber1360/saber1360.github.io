@@ -817,7 +817,7 @@
 <h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><h4 id="写完proto文件后生成遇到问题"><a href="#写完proto文件后生成遇到问题" class="headerlink" title="写完proto文件后生成遇到问题"></a>写完proto文件后生成遇到问题</h4><p><img src="image-20220617140546624.png" alt="image-20220617140546624"></p>
 ]]></content>
       <categories>
-        <category>任务</category>
+        <category>task</category>
       </categories>
       <tags>
         <tag>大创</tag>
@@ -879,7 +879,24 @@
 </div>
 ]]></content>
       <categories>
-        <category>任务</category>
+        <category>task</category>
+      </categories>
+      <tags>
+        <tag>大创</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>bingogame研究</title>
+    <url>/2022/06/16/bingogame%E7%A0%94%E7%A9%B6/</url>
+    <content><![CDATA[<blockquote>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>先附链接 <a href="https://docs.aelf.io/en/latest/tutorials/smart-contract-demos/bingo-game.html">宾果游戏 — AElf 版本/1.0.0 文档</a></p>
+</blockquote>
+<span id="more"></span>
+<h3 id="aelf-type"><a href="#aelf-type" class="headerlink" title="aelf.type"></a>aelf.type</h3><p><a href="https://docs.aelf.io/en/latest/reference/smart-contract-api/referendum.html#aelf.Hash">AElf.Contracts.Referendum — AElf release/1.0.0 documentation</a></p>
+<p><img src="image-20220616214514521.png" alt="image-20220616214514521"></p>
+]]></content>
+      <categories>
+        <category>task</category>
       </categories>
       <tags>
         <tag>大创</tag>
@@ -914,24 +931,7 @@
 <p>解决方法：将logined，改为Logined即可，即首字母需要大写，无论你在proto里首字母定义的大写或小写</p>
 ]]></content>
       <categories>
-        <category>任务</category>
-      </categories>
-      <tags>
-        <tag>大创</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>bingogame研究</title>
-    <url>/2022/06/16/bingogame%E7%A0%94%E7%A9%B6/</url>
-    <content><![CDATA[<blockquote>
-<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>先附链接 <a href="https://docs.aelf.io/en/latest/tutorials/smart-contract-demos/bingo-game.html">宾果游戏 — AElf 版本/1.0.0 文档</a></p>
-</blockquote>
-<span id="more"></span>
-<h3 id="aelf-type"><a href="#aelf-type" class="headerlink" title="aelf.type"></a>aelf.type</h3><p><a href="https://docs.aelf.io/en/latest/reference/smart-contract-api/referendum.html#aelf.Hash">AElf.Contracts.Referendum — AElf release/1.0.0 documentation</a></p>
-<p><img src="image-20220616214514521.png" alt="image-20220616214514521"></p>
-]]></content>
-      <categories>
-        <category>任务</category>
+        <category>task</category>
       </categories>
       <tags>
         <tag>大创</tag>
@@ -1069,21 +1069,6 @@
       <tags>
         <tag>git</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2023/03/15/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<span id="more"></span>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
   </entry>
   <entry>
     <title>my-idea</title>
@@ -1254,24 +1239,6 @@
       </tags>
   </entry>
   <entry>
-    <title>切歌</title>
-    <url>/2022/05/31/%E5%88%87%E6%AD%8C/</url>
-    <content><![CDATA[<p>修改播放歌曲</p>
-<span id="more"></span>
-<p>修改:\myweb\myblog\themes\next\layout_macro\sidebar.swig</p>
-<p><img src="1.png" alt="1"></p>
-<p>将改块换为网易云外链</p>
-<img src="/2022/05/31/%E5%88%87%E6%AD%8C/a.png" class="" title="This is an example image">
-<p><img src="a.png" alt="a"></p>
-]]></content>
-      <categories>
-        <category>杂记</category>
-      </categories>
-      <tags>
-        <tag>usage</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>大创</title>
     <url>/2022/06/09/%E5%A4%A7%E5%88%9B/</url>
     <content><![CDATA[<blockquote>
@@ -1333,10 +1300,28 @@
 <p>直接上链接<a href="https://docs.aelf.io/en/latest/getting-started/smart-contract-development/deployment.html">Smart contract deployment — AElf release/1.0.0 documentation</a></p>
 ]]></content>
       <categories>
-        <category>任务</category>
+        <category>task</category>
       </categories>
       <tags>
         <tag>大创</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>切歌</title>
+    <url>/2023/05/31/%E5%88%87%E6%AD%8C/</url>
+    <content><![CDATA[<p>修改播放歌曲</p>
+<span id="more"></span>
+<p>修改:\myweb\myblog\themes\next\layout_macro\sidebar.swig</p>
+<p><img src="1.png" alt="1"></p>
+<p>将改块换为网易云外链</p>
+<img src="/2023/05/31/%E5%88%87%E6%AD%8C/a.png" class="" title="This is an example image">
+<p><img src="a.png" alt="a"></p>
+]]></content>
+      <categories>
+        <category>杂记</category>
+      </categories>
+      <tags>
+        <tag>usage</tag>
       </tags>
   </entry>
   <entry>
@@ -1350,10 +1335,23 @@
 <h4 id="数据库密码问题"><a href="#数据库密码问题" class="headerlink" title="数据库密码问题"></a>数据库密码问题</h4><p>为了方便，前期暂不使用数据库密码，方便所有人调试，到后期再统一密码将密码加上去</p>
 ]]></content>
       <categories>
-        <category>任务</category>
+        <category>task</category>
       </categories>
       <tags>
         <tag>大创</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>日记test</title>
+    <url>/2023/03/23/%E6%97%A5%E8%AE%B0test/</url>
+    <content><![CDATA[<span id="more"></span>
+<p>for test</p>
+]]></content>
+      <categories>
+        <category>mydiary</category>
+      </categories>
+      <tags>
+        <tag>test</tag>
       </tags>
   </entry>
   <entry>
@@ -1403,10 +1401,25 @@
 </div>
 <h4 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h4>]]></content>
       <categories>
-        <category>任务</category>
+        <category>task</category>
       </categories>
       <tags>
         <tag>大创</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2023/03/15/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<span id="more"></span>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
   </entry>
 </search>

@@ -6,7 +6,7 @@
   <link href="http://saber1360.github.io/atom.xml" rel="self"/>
   
   <link href="http://saber1360.github.io/"/>
-  <updated>2023-03-22T15:18:18.787Z</updated>
+  <updated>2023-03-23T13:04:40.694Z</updated>
   <id>http://saber1360.github.io/</id>
   
   <author>
@@ -15,6 +15,53 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>切歌</title>
+    <link href="http://saber1360.github.io/2023/05/31/%E5%88%87%E6%AD%8C/"/>
+    <id>http://saber1360.github.io/2023/05/31/%E5%88%87%E6%AD%8C/</id>
+    <published>2023-05-31T06:16:59.000Z</published>
+    <updated>2023-03-23T13:04:40.694Z</updated>
+    
+    <content type="html"><![CDATA[<p>修改播放歌曲</p><span id="more"></span><p>修改:\myweb\myblog\themes\next\layout_macro\sidebar.swig</p><p><img src="1.png" alt="1"></p><p>将改块换为网易云外链</p><img src="/2023/05/31/%E5%88%87%E6%AD%8C/a.png" class="" title="This is an example image"><p><img src="a.png" alt="a"></p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;修改播放歌曲&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="杂记" scheme="http://saber1360.github.io/categories/%E6%9D%82%E8%AE%B0/"/>
+    
+    
+    <category term="usage" scheme="http://saber1360.github.io/tags/usage/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>日记test</title>
+    <link href="http://saber1360.github.io/2023/03/23/%E6%97%A5%E8%AE%B0test/"/>
+    <id>http://saber1360.github.io/2023/03/23/%E6%97%A5%E8%AE%B0test/</id>
+    <published>2023-03-23T12:52:25.000Z</published>
+    <updated>2023-03-23T13:01:04.232Z</updated>
+    
+    <content type="html"><![CDATA[<span id="more"></span><p>for test</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;span id=&quot;more&quot;&gt;&lt;/span&gt;
+&lt;p&gt;for test&lt;/p&gt;
+</summary>
+      
+    
+    
+    
+    <category term="mydiary" scheme="http://saber1360.github.io/categories/mydiary/"/>
+    
+    
+    <category term="test" scheme="http://saber1360.github.io/tags/test/"/>
+    
+  </entry>
   
   <entry>
     <title>cmd字符串操作</title>
@@ -80,7 +127,7 @@
     <link href="http://saber1360.github.io/2022/07/03/%E5%A4%A7%E5%88%9B%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/"/>
     <id>http://saber1360.github.io/2022/07/03/%E5%A4%A7%E5%88%9B%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/</id>
     <published>2022-07-03T14:22:11.000Z</published>
-    <updated>2023-03-23T04:56:29.282Z</updated>
+    <updated>2023-03-23T12:48:47.607Z</updated>
     
     <content type="html"><![CDATA[<blockquote><h3 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h3><p>记录一些注意事项，如环境配置问题等</p></blockquote><span id="more"></span><h3 id="后端注意事项"><a href="#后端注意事项" class="headerlink" title="后端注意事项"></a>后端注意事项</h3><h4 id="数据库版本问题"><a href="#数据库版本问题" class="headerlink" title="数据库版本问题"></a>数据库版本问题</h4><p>由于前期是在windows下，而redis只有3.0版本系列，所以使用得redis包为3.1.2，而问题在于3.0与4.0版本语法有些改动，故，如果上linux服务器则需要redis使用3.0版本或调整redis语法并且将redis包版本更新为4.0</p><h4 id="数据库密码问题"><a href="#数据库密码问题" class="headerlink" title="数据库密码问题"></a>数据库密码问题</h4><p>为了方便，前期暂不使用数据库密码，方便所有人调试，到后期再统一密码将密码加上去</p>]]></content>
     
@@ -91,7 +138,7 @@
     
     
     
-    <category term="任务" scheme="http://saber1360.github.io/categories/%E4%BB%BB%E5%8A%A1/"/>
+    <category term="task" scheme="http://saber1360.github.io/categories/task/"/>
     
     
     <category term="大创" scheme="http://saber1360.github.io/tags/%E5%A4%A7%E5%88%9B/"/>
@@ -103,7 +150,7 @@
     <link href="http://saber1360.github.io/2022/06/23/aelf%E8%AE%BE%E7%BD%AE/"/>
     <id>http://saber1360.github.io/2022/06/23/aelf%E8%AE%BE%E7%BD%AE/</id>
     <published>2022-06-23T12:13:16.000Z</published>
-    <updated>2023-03-23T04:56:13.472Z</updated>
+    <updated>2023-03-23T12:48:47.612Z</updated>
     
     <content type="html"><![CDATA[<blockquote><h3 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h3><p>记录一些设置方便写代码和debug</p></blockquote><span id="more"></span><h3 id="1-控制台信息输出过多"><a href="#1-控制台信息输出过多" class="headerlink" title="1. 控制台信息输出过多"></a>1. 控制台信息输出过多</h3><p>解决方法:修改以下选项</p><p>给出<a href="https://docs.microsoft.com/en-us/dotnet/core/extensions/logging?tabs=command-line">Logging in .NET | Microsoft Docs</a></p><p><img src="image-20220623201550242.png" alt="image-20220623201550242"></p><p>给出选项名和意</p><div class="table-container"><table><thead><tr><th>Critical</th><th>5</th><th>Logs that describe an unrecoverable application or system crash, or a catastrophic failure that requires immediate attention.</th></tr></thead><tbody><tr><td>Debug</td><td>1</td><td>Logs that are used for interactive investigation during development. These logs should primarily contain information useful for debugging and have no long-term value.</td></tr><tr><td>Error</td><td>4</td><td>Logs that highlight when the current flow of execution is stopped due to a failure. These should indicate a failure in the current activity, not an application-wide failure.</td></tr><tr><td>Information</td><td>2</td><td>Logs that track the general flow of the application. These logs should have long-term value.</td></tr><tr><td>None</td><td>6</td><td>Not used for writing log messages. Specifies that a logging category should not write any messages.</td></tr><tr><td>Trace</td><td>0</td><td>Logs that contain the most detailed messages. These messages may contain sensitive application data. These messages are disabled by default and should never be enabled in a production environment.</td></tr><tr><td>Warning</td><td>3</td><td>Logs that highlight an abnormal or unexpected event in the application flow, but do not otherwise cause the application execution to stop</td></tr></tbody></table></div>]]></content>
     
@@ -114,7 +161,7 @@
     
     
     
-    <category term="任务" scheme="http://saber1360.github.io/categories/%E4%BB%BB%E5%8A%A1/"/>
+    <category term="task" scheme="http://saber1360.github.io/categories/task/"/>
     
     
     <category term="大创" scheme="http://saber1360.github.io/tags/%E5%A4%A7%E5%88%9B/"/>
@@ -152,7 +199,7 @@
     <link href="http://saber1360.github.io/2022/06/20/aelf%E9%94%99%E8%AF%AF%E5%BD%92%E7%BA%B3/"/>
     <id>http://saber1360.github.io/2022/06/20/aelf%E9%94%99%E8%AF%AF%E5%BD%92%E7%BA%B3/</id>
     <published>2022-06-20T01:32:00.000Z</published>
-    <updated>2023-03-23T04:56:14.798Z</updated>
+    <updated>2023-03-23T12:48:47.608Z</updated>
     
     <content type="html"><![CDATA[<blockquote><h3 id="summary"><a href="#summary" class="headerlink" title="summary"></a>summary</h3><p>记录一些遇到的问题及错误</p></blockquote><span id="more"></span><ol><li>类型‘ ’中不存在类型名‘’</li></ol><p><img src="image-20220620094656590.png" alt="image-20220620094656590"></p><p>解决方法：在类声明处添加partial，如下</p><p><img src="image-20220620100811478.png" alt="image-20220620100811478"></p><p>在代码生成器中上图中红色方框加上不能省</p><ol><li>proto问题，添加新的proto文件后build无效没有生成对应文件</li></ol><p>build无效即没在generated下生成对应文件</p><p><img src="image-20220620205148011.png" alt="image-20220620205148011"></p><p>解决方法：导航到如下路径下的csproj文件，然后加上方框内如下所示代码</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;ContractReference Include=&quot;..\..\protobuf\token_contract.proto&quot;&gt;</span><br><span class="line">  &lt;Link&gt;Protobuf/Proto/token_contract.proto&lt;/Link&gt;</span><br><span class="line">&lt;/ContractReference&gt;</span><br></pre></td></tr></table></figure><p><img src="image-20220620204743677.png" alt="image-20220620204743677"></p><ol><li>关于新建对象明明定义了，却说没有，如下图</li></ol><p><img src="aelf错误归纳/image-20220621165902989.png" alt="image-20220621165902989"></p><p>解决方法：将logined，改为Logined即可，即首字母需要大写，无论你在proto里首字母定义的大写或小写</p>]]></content>
     
@@ -163,7 +210,7 @@
     
     
     
-    <category term="任务" scheme="http://saber1360.github.io/categories/%E4%BB%BB%E5%8A%A1/"/>
+    <category term="task" scheme="http://saber1360.github.io/categories/task/"/>
     
     
     <category term="大创" scheme="http://saber1360.github.io/tags/%E5%A4%A7%E5%88%9B/"/>
@@ -175,7 +222,7 @@
     <link href="http://saber1360.github.io/2022/06/17/%E5%A4%A7%E5%88%9B%E8%A7%84%E5%88%92/"/>
     <id>http://saber1360.github.io/2022/06/17/%E5%A4%A7%E5%88%9B%E8%A7%84%E5%88%92/</id>
     <published>2022-06-17T06:31:00.000Z</published>
-    <updated>2023-03-23T05:01:53.583Z</updated>
+    <updated>2023-03-23T12:48:47.604Z</updated>
     
     <content type="html"><![CDATA[<blockquote><h3 id="summary"><a href="#summary" class="headerlink" title="summary"></a>summary</h3><p>用于规划大创项目</p></blockquote><span id="more"></span><h3 id="用户分类"><a href="#用户分类" class="headerlink" title="用户分类"></a>用户分类</h3><p>可以按照如下示例进行分类，分为3类</p><ul><li>发起人：发起评审者</li><li>提交者：提交项目用于评审</li><li>评审者：评审提交的项目</li></ul><p><img src="image-20220617143258886.png" alt="image-20220617143258886"></p><h3 id="合约编写"><a href="#合约编写" class="headerlink" title="合约编写"></a>合约编写</h3><h4 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h4><div class="table-container"><table><thead><tr><th>方法名</th><th>参数</th><th>返回值</th><th>描述</th></tr></thead><tbody><tr><td>Initial</td><td>null</td><td>null</td><td>初始化</td></tr><tr><td>Register</td><td>null</td><td>null</td><td>注册</td></tr><tr><td></td><td></td><td></td></tr></tbody></table></div><h4 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h4>]]></content>
     
@@ -186,7 +233,7 @@
     
     
     
-    <category term="任务" scheme="http://saber1360.github.io/categories/%E4%BB%BB%E5%8A%A1/"/>
+    <category term="task" scheme="http://saber1360.github.io/categories/task/"/>
     
     
     <category term="大创" scheme="http://saber1360.github.io/tags/%E5%A4%A7%E5%88%9B/"/>
@@ -198,7 +245,7 @@
     <link href="http://saber1360.github.io/2022/06/17/aelf%E8%A7%86%E9%A2%91%E7%AC%94%E8%AE%B0/"/>
     <id>http://saber1360.github.io/2022/06/17/aelf%E8%A7%86%E9%A2%91%E7%AC%94%E8%AE%B0/</id>
     <published>2022-06-17T06:03:00.000Z</published>
-    <updated>2023-03-23T04:56:12.091Z</updated>
+    <updated>2023-03-23T12:48:47.604Z</updated>
     
     <content type="html"><![CDATA[<blockquote><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>记录一些视频中需要注意的点</p></blockquote><span id="more"></span><h3 id="重点看"><a href="#重点看" class="headerlink" title="重点看"></a>重点看</h3><ol><li>9.06的45min处（也可以49开始看）讲了一个合约函数的逻辑</li><li>测试56min</li></ol><h3 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h3><ol><li>在State文件里，如果变量后加上state后则表示要进数据库，每次修改完后会进数据库</li></ol><p><img src="image-20220617142357760.png" alt="image-20220617142357760"></p><ol><li>当成员变量只能有一个时，在state文件中使用singleton定义</li></ol><p><img src="image-20220617145512806.png" alt="image-20220617145512806"></p><ol><li>Context中天然提供一些调用者的信息，诸如sender，为调用者的地址</li></ol><p><img src="image-20220617150330352.png" alt="image-20220617150330352"></p><h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><h4 id="写完proto文件后生成遇到问题"><a href="#写完proto文件后生成遇到问题" class="headerlink" title="写完proto文件后生成遇到问题"></a>写完proto文件后生成遇到问题</h4><p><img src="image-20220617140546624.png" alt="image-20220617140546624"></p>]]></content>
     
@@ -209,7 +256,7 @@
     
     
     
-    <category term="任务" scheme="http://saber1360.github.io/categories/%E4%BB%BB%E5%8A%A1/"/>
+    <category term="task" scheme="http://saber1360.github.io/categories/task/"/>
     
     
     <category term="大创" scheme="http://saber1360.github.io/tags/%E5%A4%A7%E5%88%9B/"/>
@@ -221,7 +268,7 @@
     <link href="http://saber1360.github.io/2022/06/16/bingogame%E7%A0%94%E7%A9%B6/"/>
     <id>http://saber1360.github.io/2022/06/16/bingogame%E7%A0%94%E7%A9%B6/</id>
     <published>2022-06-16T13:03:33.000Z</published>
-    <updated>2023-03-23T04:56:15.912Z</updated>
+    <updated>2023-03-23T12:48:47.608Z</updated>
     
     <content type="html"><![CDATA[<blockquote><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>先附链接 <a href="https://docs.aelf.io/en/latest/tutorials/smart-contract-demos/bingo-game.html">宾果游戏 — AElf 版本/1.0.0 文档</a></p></blockquote><span id="more"></span><h3 id="aelf-type"><a href="#aelf-type" class="headerlink" title="aelf.type"></a>aelf.type</h3><p><a href="https://docs.aelf.io/en/latest/reference/smart-contract-api/referendum.html#aelf.Hash">AElf.Contracts.Referendum — AElf release/1.0.0 documentation</a></p><p><img src="image-20220616214514521.png" alt="image-20220616214514521"></p>]]></content>
     
@@ -232,7 +279,7 @@
     
     
     
-    <category term="任务" scheme="http://saber1360.github.io/categories/%E4%BB%BB%E5%8A%A1/"/>
+    <category term="task" scheme="http://saber1360.github.io/categories/task/"/>
     
     
     <category term="大创" scheme="http://saber1360.github.io/tags/%E5%A4%A7%E5%88%9B/"/>
@@ -244,7 +291,7 @@
     <link href="http://saber1360.github.io/2022/06/09/%E5%A4%A7%E5%88%9B/"/>
     <id>http://saber1360.github.io/2022/06/09/%E5%A4%A7%E5%88%9B/</id>
     <published>2022-06-09T08:06:13.000Z</published>
-    <updated>2023-03-23T04:56:28.068Z</updated>
+    <updated>2023-03-23T12:48:47.607Z</updated>
     
     <content type="html"><![CDATA[<blockquote><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>大创的一些问题笔记</p></blockquote><span id="more"></span><h3 id="环境配置for-linux"><a href="#环境配置for-linux" class="headerlink" title="环境配置for linux"></a>环境配置for linux</h3><ol><li><p>```<br>sudo apt-get install nodejs</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">2. ```</span><br><span class="line">   sudo apt install redis-server</span><br><span class="line">   验证：redis-server</span><br><span class="line">   结果如下</span><br><span class="line">   关闭使用redis-cli shutdown</span><br><span class="line">   如果杀死不了，则是开了保护进程，杀死一个就会再开一个，这时使用/etc/init.d/redis-server stop</span><br></pre></td></tr></table></figure><p><img src="image-20220610221700059.png" alt="image-20220610221700059"></p></li><li><p>安装.NET Core,高版本兼容低版本，所以不必一定安装3.1</p><p><a href="https://dotnet.microsoft.com/zh-cn/download/dotnet">.NET 下载(Linux、macOS 和 Windows) (microsoft.com)</a></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">wget https://packages.microsoft.com/config/ubuntu/22.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb</span><br><span class="line">sudo dpkg -i packages-microsoft-prod.deb</span><br><span class="line">rm packages-microsoft-prod.deb</span><br><span class="line"></span><br><span class="line">#注意那个22.04，看你的系统版本</span><br><span class="line">sudo apt-get update; \</span><br><span class="line">  sudo apt-get install -y apt-transport-https &amp;&amp; \</span><br><span class="line">  sudo apt-get update &amp;&amp; \</span><br><span class="line">  sudo apt-get install -y dotnet-sdk-6.0</span><br><span class="line">  </span><br></pre></td></tr></table></figure></li></ol><h3 id="aelf笔记"><a href="#aelf笔记" class="headerlink" title="aelf笔记"></a>aelf笔记</h3><ol><li>运行</li></ol><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"># enter the Launcher folder and build </span><br><span class="line">cd chain/src/AElf.Boilerplate.Launcher/</span><br><span class="line"></span><br><span class="line"># build</span><br><span class="line">dotnet build</span><br><span class="line"></span><br><span class="line"># run the node </span><br><span class="line">dotnet run --no-build bin/Debug/netcoreapp3.1/AElf.Boilerplate.Launcher</span><br><span class="line"></span><br><span class="line">报错解决方法</span><br><span class="line">When running Boilerplate, you might see some errors related to an incorrect password, to solve this, you need to backup your data-dir/keys/ folder and start with an empty keys folder. Once you’ve cleaned the keys, stop and restart the node with the dotnet run command shown above</span><br><span class="line"></span><br><span class="line">关闭就直接关终端吧</span><br><span class="line">官网上说的关掉方法在vscode里不管用</span><br><span class="line"></span><br><span class="line">cd web/greeter</span><br><span class="line">npm start</span><br></pre></td></tr></table></figure><ol><li>运行测试</li></ol><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">cd ../../test/AElf.Contracts.HelloWorldContract.Tests/</span><br><span class="line">dotnet test</span><br><span class="line">官网上智障的缺了个s</span><br><span class="line"></span><br><span class="line">输出：</span><br><span class="line">Test Run Successful.</span><br><span class="line">Total tests: 1</span><br><span class="line">     Passed: 1</span><br><span class="line"> Total time: 2.8865 Seconds</span><br><span class="line"> </span><br><span class="line"> 实际tmd是汉语：</span><br><span class="line"> 正在启动测试执行，请稍候...</span><br><span class="line">总共 1 个测试文件与指定模式相匹配。</span><br><span class="line">已通过! - 失败:     0，通过:     1，已跳过:     0，总计:     1，持续时间: &lt; 1 ms</span><br></pre></td></tr></table></figure><p>3.code generator代码生成器</p><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*Navigate to AElf.Boilerplate.CodeGenerator folder and open appsettings.json, modify Content node, tune New values as you wish*/</span></span><br></pre></td></tr></table></figure><p>eg:<img src="image-20211110214144737.png" alt="image-20211110214144737"></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># enter the Launcher folder and build </span><br><span class="line">cd chain/src/AElf.Boilerplate.CodeGenerator/</span><br><span class="line"></span><br><span class="line"># build</span><br><span class="line">dotnet build</span><br><span class="line"></span><br><span class="line"># run the node </span><br><span class="line">dotnet run --no-build bin/Debug/netcoreapp3.1/AElf.Boilerplate.CodeGenerator</span><br></pre></td></tr></table></figure><ol><li><p>合约部署contract deployment</p><p><!--好像很重要的样子-->自己去读吧</p></li><li><p>创建一个合约</p></li></ol><ul><li><strong>create the project</strong>: generate the contract template using <strong>AElf Boilerplate</strong>’s code generator.</li><li><strong>define the contract and its types</strong>: the methods and types needed in your contract should be defined in a protobuf file, following typical protobuf syntax.</li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">有一些protobuf讲解，下有链接，主要讲这个</span><br></pre></td></tr></table></figure><ul><li><strong>generate the code</strong>: build the project to generate the base contract code from the proto definition.</li><li><strong>extend the generated code</strong>: implement the logic of the contract methods.</li></ul><p><a href="https://aelf-boilerplate-docs.readthedocs.io/en/latest/demo/greeter.html">Smart contract implementation — AElf 0.6.0 documentation (aelf-boilerplate-docs.readthedocs.io)</a></p><ol><li>断言assert</li></ol><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">在觉得可能有问题的地方建议都加一句断言，方便debug</span><br><span class="line">使用</span><br><span class="line">Assert(!string.IsNullOrWhiteSpace(input.Value), &quot;Invalid name.&quot;);</span><br><span class="line">Assert(condition, &quot;tips&quot;);</span><br><span class="line">condition为false时将中止并输出，后面的提示字符串，tips要让人能看懂，不要写火星文</span><br></pre></td></tr></table></figure><p>7.log</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Context.LogDebug(() =&gt; &quot;Hello &#123;0&#125;!&quot;, input.Value);</span><br><span class="line"></span><br><span class="line">It is also possible to log from smart contract methods. The above example will log “Hello” and the value of the input. It also prints useful information like the ID of the transaction. It will print in the console log if you launch the node with DEBUG mode. This is only for debug use and has no impacts on state at all.</span><br></pre></td></tr></table></figure><ol><li>front end前端</li></ol><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">前提：After you run Boilerplate, open another terminal at the repo’s root and navigate to the greeter project:</span><br><span class="line"></span><br><span class="line">cd web/greeter</span><br><span class="line">npm i</span><br><span class="line">npm start</span><br><span class="line">sdk:https://github.com/AElfProject/aelf-sdk.js</span><br><span class="line">原文：https://docs.aelf.io/en/latest/getting-started/smart-contract-development/greeter-contract/front.html</span><br></pre></td></tr></table></figure><ol><li>部署</li></ol><p>直接上链接<a href="https://docs.aelf.io/en/latest/getting-started/smart-contract-development/deployment.html">Smart contract deployment — AElf release/1.0.0 documentation</a></p>]]></content>
     
@@ -255,7 +302,7 @@
     
     
     
-    <category term="任务" scheme="http://saber1360.github.io/categories/%E4%BB%BB%E5%8A%A1/"/>
+    <category term="task" scheme="http://saber1360.github.io/categories/task/"/>
     
     
     <category term="大创" scheme="http://saber1360.github.io/tags/%E5%A4%A7%E5%88%9B/"/>
@@ -434,42 +481,6 @@
     
     
     <category term="cmd" scheme="http://saber1360.github.io/tags/cmd/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>切歌</title>
-    <link href="http://saber1360.github.io/2022/05/31/%E5%88%87%E6%AD%8C/"/>
-    <id>http://saber1360.github.io/2022/05/31/%E5%88%87%E6%AD%8C/</id>
-    <published>2022-05-31T06:16:59.000Z</published>
-    <updated>2023-03-22T15:37:21.494Z</updated>
-    
-    <content type="html"><![CDATA[<p>修改播放歌曲</p><span id="more"></span><p>修改:\myweb\myblog\themes\next\layout_macro\sidebar.swig</p><p><img src="1.png" alt="1"></p><p>将改块换为网易云外链</p><img src="/2022/05/31/%E5%88%87%E6%AD%8C/a.png" class="" title="This is an example image"><p><img src="a.png" alt="a"></p>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;修改播放歌曲&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="杂记" scheme="http://saber1360.github.io/categories/%E6%9D%82%E8%AE%B0/"/>
-    
-    
-    <category term="usage" scheme="http://saber1360.github.io/tags/usage/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>first</title>
-    <link href="http://saber1360.github.io/2022/05/30/first/"/>
-    <id>http://saber1360.github.io/2022/05/30/first/</id>
-    <published>2022-05-30T15:37:37.000Z</published>
-    <updated>2023-03-22T15:35:49.592Z</updated>
-    
-    
-    
-    
-    
-    <category term="first" scheme="http://saber1360.github.io/tags/first/"/>
     
   </entry>
   
